@@ -1,16 +1,20 @@
 import './styles.css';
+import timerTemplate from './templates/timerTemp.hbs';
 
 class Timer {
-  refs = {
-    days: document.querySelector('[data-value=days]'),
-    hours: document.querySelector('[data-value=hours]'),
-    mins: document.querySelector('[data-value=mins]'),
-    secs: document.querySelector('[data-value=secs]'),
-  };
-
   constructor ({ selector, targetDate }) {
     this.selector = selector;
     this.targetDate = targetDate;
+    this.markup = document.body.insertAdjacentHTML(
+      'beforeend',
+      timerTemplate(selector),
+    );
+    this.refs = {
+      days: document.querySelector(`#${selector} [data-value=days]`),
+      hours: document.querySelector(`#${selector} [data-value=hours]`),
+      mins: document.querySelector(`#${selector} [data-value=mins]`),
+      secs: document.querySelector(`#${selector} [data-value=secs]`),
+    };
   }
 
   counter () {
@@ -32,8 +36,22 @@ class Timer {
 }
 
 const timer = new Timer({
-  selector: '#timer-1',
-  targetDate: new Date('Sep 17, 2021'),
+  selector: 'timer-1',
+  targetDate: new Date('Sep 17, 2021 21:00'),
 });
 
 timer.counter();
+
+const timer2 = new Timer({
+  selector: 'timer-2',
+  targetDate: new Date('Jul 17,2021 13:30'),
+});
+
+timer2.counter();
+
+const timer3 = new Timer({
+  selector: 'timer-3',
+  targetDate: new Date('Jul 23,2021 12:00'),
+});
+
+timer3.counter();
