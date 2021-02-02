@@ -27,11 +27,11 @@ class Timer {
   }
 }
 
-const targetDate = 'Sep 17, 2021';
+const targetDate = new Timer({
+  selector: '#timer-1',
+  targetDate: new Date('Sep 17, 2021'),
+});
 
 setInterval(() => {
-  new Timer({
-    selector: '#timer-1',
-    targetDate: new Date(targetDate),
-  }).counter();
+  targetDate.counter();
 }, 1000);
