@@ -27,7 +27,7 @@ class Timer {
   }
 }
 
-const targetDate = 'Sep 17, 2024';
+const targetDate = 'Sep 17, 2021';
 
 setInterval(() => {
   new Timer({
